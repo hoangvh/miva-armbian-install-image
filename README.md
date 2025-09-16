@@ -25,7 +25,7 @@
  ![Hình minh họa bước 3](images/disk-management.png)
  
 - Chọn các tham số như hình minh họa dưới -> bấm Next -> Finish.
-- 
+
  ![Hình minh họa bước 3](images/format_fat32.png)
 
 - Lưu ý: phân vùng này sẽ chứa file cấu hình và image của thiết bị.
@@ -34,7 +34,8 @@
 
 ## 📂 Bước 4: Copy file cấu hình và image
 
-1. Copy **init.conf** và file **firmware** của thiết bị H618 vào phân vùng FAT32 vừa tạo trên thẻ.  
+1. Copy **init.conf** và file **firmware** của thiết bị H618 vào phân vùng FAT32 vừa tạo trên thẻ.
+ ![Hình minh họa bước 4](images/sdcard.png)
 2. Chỉnh lại tên file `image_file` trong **init.conf**:
    ```ini
    image_file=Tên_file.xz  # hoặc .gz / .img
