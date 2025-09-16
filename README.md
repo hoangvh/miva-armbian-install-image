@@ -21,11 +21,10 @@
 
 - Nhấn Windows, gõ disk management để mở **Disk Management**.
 - Chọn thẻ nhớ, bấm chuột phải vào phân vùng Unllocated chọn New Simple Volume... -> chọn Next 3 lần
+  ![Hình minh họa bước 3](images/Disk management.png)
 - Chọn các tham số như hình minh họa dưới -> bấm Next -> Finish
-  
+  ![Hình minh họa bước 3](images/format_fat21.png)
 - Lưu ý: phân vùng này sẽ chứa file cấu hình và image của thiết bị.
-
-![Hình minh họa bước 3](link-to-image-step3.png)
 
 ---
 
