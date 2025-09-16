@@ -71,7 +71,3 @@
    netplan apply
    systemctl restart miva-setup.service
    journalctl -u miva-setup.service -f
-
-
-   
-
