@@ -17,10 +17,12 @@
 
 ---
 
-## 🗂 Bước 3: Tạo phân vùng FAT32
+## 🗂 Bước 3: Tạo phân vùng FAT32 trên Windows 10/11
 
-- Trên Windows, mở **Disk Management**.
-- Chọn thẻ nhớ, tạo phân vùng **FAT32**.
+- Nhấn Windows, gõ disk management để mở **Disk Management**.
+- Chọn thẻ nhớ, bấm chuột phải vào phân vùng Unllocated chọn New Simple Volume... -> chọn Next 3 lần
+- Chọn các tham số như hình minh họa dưới -> bấm Next -> Finish
+  
 - Lưu ý: phân vùng này sẽ chứa file cấu hình và image của thiết bị.
 
 ![Hình minh họa bước 3](link-to-image-step3.png)
@@ -29,7 +31,7 @@
 
 ## 📂 Bước 4: Copy file cấu hình và image
 
-1. Copy **init.conf** và file **image** của thiết bị H618 vào phân vùng FAT32 vừa tạo.  
+1. Copy **init.conf** và file **firmware** của thiết bị H618 vào phân vùng FAT32 vừa tạo trên thẻ.  
 2. Chỉnh lại tên file `image_file` trong **init.conf**:
    ```ini
    image_file=Tên_file.xz  # hoặc .gz / .img
