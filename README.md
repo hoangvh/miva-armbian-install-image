@@ -39,3 +39,21 @@
 2. Chỉnh lại tên file `image_file` trong **init.conf**:
    ```ini
    image_file=Tên_file.xz  # hoặc .gz / .img
+   
+## 📂 Bước 5: Cài đặt firmware vào eMMC
+
+1. Cắm thẻ vào khe sdcard trên thiết bị H618, cấp nguồn.
+2. Truy cập SSH vào thiết bị tại địa chỉ ip: 192.168.11.102 hoặc UART
+3. Gõ lệnh để kiểm tra quá trình cài đặt firmware vào emmc
+   ```ini
+   journalctl -u sd_install.service -f
+![Hình minh họa bước 4](images/ssh.png)
+4. Các trạng thái đèn server (led màu đỏ):
+- Đèn server nháy nhanh: đang cài đặt.
+- Đèn server nháy chậm: cài đặt xong.
+- Đèn server không nháy: Lỗi không có image hoặc file init.conf , cần kiểm tra lại bộ cài.
+5. Tắt thiết bị:
+- Gõ lệnh shutdown -h now
+- Chờ cho đèn tắt hẳn rồi rút nguồn.
+
+
