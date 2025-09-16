@@ -61,24 +61,36 @@
 - Chuẩn bị bước thiết lập cài đặt lần đầu trên thiết bị
   
 ## 📂 Bước 6: Cài đặt ứng dụng
-1. Ứng dụng (miva/mira) sẽ tự động cài đặt khi thiết bị có kết nối internet.
-2. Địa chỉ IP mặc định: 192.168.11.102 có thể chưa kết nối được ra internet, cần phải đổi lại địa chỉ IP cho thiết bị. 
+
+1. Ứng dụng (**miva/mira**) sẽ tự động cài đặt khi thiết bị có kết nối internet.  
+2. Địa chỉ IP mặc định `192.168.11.102` có thể chưa kết nối được ra internet, cần đổi lại địa chỉ IP cho thiết bị:  
+
+   Sửa file cấu hình Netplan:
    ```ini
    nano /etc/netplan/00-default-use-network-manager.yaml
-   ```ini
-   netplan apply
+Áp dụng thay đổi mạng:
 
-   ```ini
-   systemctl restart miva-setup.service
+ini
+Sao chép mã
+netplan apply
+Khởi động lại dịch vụ setup:
 
-   Lệnh kiểm tra tiến trình cài đặt
-   ```ini
-    journalctl -u miva-setup.service -f
+ini
+Sao chép mã
+systemctl restart miva-setup.service
+Kiểm tra tiến trình cài đặt:
 
-   Thấy log là thành công, chờ khoảng 1' để app chạy và vào web console của thiết bị để kiểm tra.
-   ```ini
-   Setup miva hoàn tất.
-   Finished miva-setup.service - Setup Miva one-time service (download from GitHub).
+ini
+Sao chép mã
+journalctl -u miva-setup.service -f
+Nếu thấy log hiển thị thành công, chờ khoảng 1 phút để ứng dụng chạy, sau đó vào web console của thiết bị để kiểm tra.
+
+Ví dụ log hoàn tất:
+
+ini
+Sao chép mã
+Setup miva hoàn tất.
+Finished miva-setup.service - Setup Miva one-time service (download from GitHub).
 
 
    
