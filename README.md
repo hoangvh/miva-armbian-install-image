@@ -47,7 +47,9 @@
 3. Gõ lệnh để kiểm tra quá trình cài đặt firmware vào emmc
    ```ini
    journalctl -u sd_install.service -f
+   
 ![Hình minh họa bước 4](images/ssh.png)
+
 4. Các trạng thái đèn server (led màu đỏ):
 - Đèn server nháy nhanh: đang cài đặt.
 - Đèn server nháy chậm: cài đặt xong.
