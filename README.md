@@ -1,15 +1,10 @@
-# MIVA Armbian Build
-
-**Debian Bookworm build cho MIVA H618**
+# Tạo thẻ SD bộ cài cho Allwiner H618 (Miva -Mira)
 
 ---
-
 ## 📦 Bước 1: Tải file cài đặt
 
 - Vào [Release](https://github.com/hoangvh/miva-armbian-build/releases) trên GitHub.
-- Tải file `Armbian_install.img.xz`.
-
-![Hình minh họa bước 1](link-to-image-step1.png)
+- Tải file `Armbian_install_yymmdd_hhmm.img.xz`.
 
 ---
 
@@ -18,7 +13,7 @@
 - Sử dụng **Balena Etcher** để cài đặt image vào thẻ nhớ.
 - Chọn image vừa tải và thẻ nhớ, nhấn **Flash**.
 
-![Hình minh họa bước 2](link-to-image-step2.png)
+![Hình minh họa bước 2](images/balena-etcher.png)
 
 ---
 
