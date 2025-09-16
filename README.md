@@ -4,7 +4,8 @@
 ## 📦 Bước 1: Tải file cài đặt
 
 - Vào [Release](https://github.com/hoangvh/miva-armbian-build/releases) trên GitHub.
-- Tải file `Armbian_install_yymmdd_hhmm.img.xz`.
+- Tải file `Armbian_install_yymmdd_hhmm.img.xz` để tạo bộ cài đặt tự động trên thẻ sd
+- Tải file `miva_250916_1024.img.xz` để copy firmware từ thẻ sd vào emmc trên thiết bị.
 
 ---
 
@@ -56,6 +57,29 @@
 - Đèn server không nháy: Lỗi không có image hoặc file init.conf , cần kiểm tra lại bộ cài.
 5. Tắt thiết bị:
 - Gõ lệnh shutdown -h now
-- Chờ cho đèn tắt hẳn rồi rút nguồn.
+- Chờ cho đèn tắt hẳn rồi rút nguồn, rút thẻ nhớ.
+- Chuẩn bị bước thiết lập cài đặt lần đầu trên thiết bị
+  
+## 📂 Bước 6: Cài đặt ứng dụng
+1. Ứng dụng (miva/mira) sẽ tự động cài đặt khi thiết bị có kết nối internet.
+2. Địa chỉ IP mặc định: 192.168.11.102 có thể chưa kết nối được ra internet, cần phải đổi lại địa chỉ IP cho thiết bị. 
+   ```ini
+   nano /etc/netplan/00-default-use-network-manager.yaml
+   ```ini
+   netplan apply
 
+   ```ini
+   systemctl restart miva-setup.service
+
+   Lệnh kiểm tra tiến trình cài đặt
+   ```ini
+    journalctl -u miva-setup.service -f
+
+   Thấy log là thành công, chờ khoảng 1' để app chạy và vào web console của thiết bị để kiểm tra.
+   ```ini
+   Setup miva hoàn tất.
+   Finished miva-setup.service - Setup Miva one-time service (download from GitHub).
+
+
+   
 
