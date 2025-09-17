@@ -62,8 +62,9 @@
   
 ## 📂 Bước 6: Cài đặt ứng dụng
 
-1. Ứng dụng (**miva/mira**) sẽ tự động cài đặt khi thiết bị có kết nối internet.  
-2. Địa chỉ IP mặc định `192.168.11.102` có thể chưa kết nối được ra internet, cần đổi lại địa chỉ IP cho thiết bị.  
+1. Cắm thẻ nhớ vào thiết bị, cấp nguồn.
+2. Ứng dụng (**miva/mira**) sẽ tự động cài đặt khi thiết bị có kết nối internet.  
+3. Địa chỉ IP mặc định `192.168.11.102` có thể chưa kết nối được ra internet, cần đổi lại địa chỉ IP cho thiết bị.  
 
    Thực hiện tuần tự các lệnh sau:
    ```bash
