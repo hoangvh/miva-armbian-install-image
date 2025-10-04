@@ -65,9 +65,9 @@
 
 1. Cắm các ăng-ten kết nối 4G, wifi, dây mạng. Cấp nguồn cho thiết bị.
 2. Ứng dụng (**miva/mira**) sẽ tự động cài đặt.
-3. Địa chỉ IP cổng ehternet mặc định `192.168.11.102/24`.
+3. Địa chỉ IP cổng ethernet mặc định `192.168.11.102/24`.
 
 ## 📂 Một số lệnh dùng để debug:
 - `docker ps`: kiểm tra tên ứng dụng miva trong docker
 - `ip a`: hiển thị ip của mạng LAN - eth0 (mặc định 192.168.11.102) , module 4G - eth1 (mặc định: 192.168.0.100), wifi (nếu bật) - wlan0
-- `docker exec -it -u0 miva`: truy cập vào docker container, gõ login, điền username/pasword để truy cập openwrt.
+- `docker exec -it -u0 miva`: truy cập vào docker container, gõ `login`, điền username/pasword để truy cập openwrt.
