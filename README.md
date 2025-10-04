@@ -4,8 +4,8 @@
 ## 📦 Bước 1: Tải file cài đặt
 
 - Vào [Release](https://github.com/hoangvh/miva-armbian-build/releases) trên GitHub.
-- Tải file `Armbian_install_yymmdd_hhmm.img.xz` để tạo bộ cài đặt tự động trên thẻ sd
-- Tải file `miva_250916_1024.img.xz` để copy firmware từ thẻ sd vào emmc trên thiết bị.
+- Tải file `installer_unofficial*.img.xz` để tạo bộ cài đặt tự động trên thẻ sd
+- Tải file `miva_unofficial.img.xz` để copy firmware từ thẻ sd vào emmc trên thiết bị.
 
 ---
 
@@ -37,7 +37,7 @@
 
 1. Copy **init.conf** và file **firmware** của thiết bị H618 vào phân vùng FAT32 vừa tạo trên thẻ.
  ![Hình minh họa bước 4](images/sdcard.png)
-2. Chỉnh lại tên file `image_file` trong **init.conf**:
+2. Đặt lại giá trị `image_file` trong **init.conf** giống với tên file miva vừa copy vào:
    ```ini
    image_file=Tên_file.xz  # hoặc .gz / .img
    
@@ -51,24 +51,23 @@
    
 ![Hình minh họa bước 4](images/ssh.png)
 -  Nếu log thông báo `All data synced to eMMC.` là đã cài đặt xong
-4. Các trạng thái đèn server (led màu đỏ):
-- Đèn server nháy nhanh: đang cài đặt.
-- Đèn server nháy chậm: cài đặt xong.
-- Đèn server không nháy: Lỗi không có image hoặc file init.conf , cần kiểm tra lại bộ cài.
+4. Các trạng thái đèn ERR (led màu đỏ):
+- Đèn ERR nháy nhanh: đang cài đặt.
+- Đèn ERR nháy chậm: cài đặt xong.
+- Đèn ERR không nháy: Lỗi đèn.
+- Đèn ERR không chuyển sang nháy chậm: Kiểm tra lại file miva hoặc tên file trong init.conf
 5. Tắt thiết bị:
-- Gõ lệnh shutdown -h now
+- Gõ lệnh `shutdown -h now`
 - Chờ cho đèn tắt hẳn rồi rút nguồn, rút thẻ nhớ.
 - Chuẩn bị bước thiết lập cài đặt lần đầu trên thiết bị
   
 ## 📂 Bước 6: Cài đặt ứng dụng
 
-1. Cắm thẻ nhớ vào thiết bị, cấp nguồn.
-2. Ứng dụng (**miva/mira**) sẽ tự động cài đặt khi thiết bị có kết nối internet.  
-3. Địa chỉ IP mặc định `192.168.11.102` có thể chưa kết nối được ra internet, cần đổi lại địa chỉ IP cho thiết bị.  
+1. Cắm các ăng-ten kết nối 4G, wifi, dây mạng. Cấp nguồn cho thiết bị.
+2. Ứng dụng (**miva/mira**) sẽ tự động cài đặt.
+3. Địa chỉ IP cổng ehternet mặc định `192.168.11.102/24`.
 
-   Thực hiện tuần tự các lệnh sau:
-   ```bash
-   nano /etc/netplan/00-default-use-network-manager.yaml
-   netplan apply
-   systemctl restart miva-setup.service
-   journalctl -u miva-setup.service -f
+## 📂 Một số lệnh dùng để debug:
+- `docker ps`: kiểm tra tên ứng dụng miva trong docker
+- `ip a`: hiển thị ip của mạng LAN - eth0 (mặc định 192.168.11.102) , module 4G - eth1 (mặc định: 192.168.0.100), wifi (nếu bật) - wlan0
+- `docker exec -it -u0 miva`: truy cập vào docker container, gõ login, điền username/pasword để truy cập openwrt.
