@@ -1,5 +1,12 @@
 # Bộ cài MIVA DSDZ-H618 LPDDR3
 
+## Bản đã kiểm tra
+
+Release đang được kiểm tra là `miva-lpddr3-260923-1044`. Bundle gồm image
+`miva-lpddr3-260923-1044.img.xz`, file SHA-256, `init.conf` và Docker archive
+`miva-v3.0.5p8.tar`. Image dùng kernel 6.18.52/current và đã kiểm tra checksum
+trước khi phát hành.
+
 ## 1. Tạo thẻ SD
 
 1. Tải image mới nhất trong [Release](https://github.com/hoangvh/miva-armbian-install-image/releases), có đuôi `.img.xz` (hoặc `.img`).
@@ -84,3 +91,18 @@ ip a
 Trong lần boot eMMC đầu tiên, LED nháy nhanh trong lúc nạp image Docker và khởi động compose; khi ứng dụng MIVA chạy thành công, LED chuyển sang nháy chậm trong khoảng 10 giây rồi tắt. Các lần boot sau không chạy lại bước cài đặt Docker.
 
 Sau lần đầu, Docker tự khởi động lại theo `restart: unless-stopped`; bootstrap không cài lại khi đã có state marker.
+
+### Kiểm tra sau khi boot eMMC
+
+```sh
+ls -la /opt/miva /home/miva/docker
+journalctl -b -u miva-bootstrap.service --no-pager
+docker ps
+docker compose -f /home/miva/docker/docker-compose.yml \
+  -f /home/miva/docker/docker-compose.override.yml config --quiet
+```
+
+Image stage ứng dụng tại `/opt/miva` vì quy trình tạo filesystem của Armbian
+loại `/home/*`. Khi boot thật từ eMMC, `miva-bootstrap` chép cây này sang
+`/home/miva`, chạy `setup_miva.sh`, sinh override theo thiết bị thực tế và giữ
+override cho các lần boot sau.
